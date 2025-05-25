@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <title>台灣天氣查詢</title>
+</head>
+<body>
+  <h1>台灣天氣查詢</h1>
+  <form method="post">
+    <label>請輸入地區：</label><input name="location">
+    <label>時段：</label>
+    <select name="time_filter">
+      <option value="全部">全部</option>
+      <option value="白天">白天</option>
+      <option value="夜間">夜間</option>
+    </select>
+    <button type="submit">查詢</button>
+  </form>
+
+  {% if result %}
+    <h2>查詢結果</h2>
+    <ul>
+      {% for item in result %}
+        <li>{{ item['時間'] }} - {{ item['天氣'] }} - {{ item['溫度'] }} - {{ item['降雨機率'] }} - 建議：{{ item['建議'] }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</body>
+</html>
